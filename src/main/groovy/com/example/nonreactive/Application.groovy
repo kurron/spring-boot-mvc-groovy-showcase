@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-class NonReactiveApplication {
+class Application {
 
 	static void main(String[] args) {
-		SpringApplication.run NonReactiveApplication, args
+		SpringApplication.run Application, args
 	}
 }
