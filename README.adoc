@@ -36,7 +36,7 @@ By default, all endpoints are exposed over HTTP.  You might want to trim that li
 === Info Endpoint
 The info endpoint has been configured to provide Operations with various pieces of potentially useful information.
 
----
+----
 {
     "git": {
         "branch": "master",
@@ -65,7 +65,7 @@ The info endpoint has been configured to provide Operations with various pieces 
         "working-directory": "/home/vagrant/GitHub/spring-boot-mvc-groovy-showcase"
     }
 }
----
+----
 
 == Troubleshooting
 == Change History
