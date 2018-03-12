@@ -30,6 +30,9 @@ The service is configured to support 3 profiles:
 * test
 * production
 
+=== Acutator Endpoints
+By default, all endpoints are exposed over HTTP.  You might want to trim that list down for the production profile.  The endpoints base path is `/operations` and not the usual `/actuator`.
+
 == Troubleshooting
 == Change History
 == License and Credits
