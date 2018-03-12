@@ -1,0 +1,32 @@
+// formerly in buildSrc but causes problem when mixed with indy compilation
+
+class ProjectVersion {
+    Integer major
+    Integer minor
+    Integer patch
+    String  branch
+
+    ProjectVersion( Integer major, Integer minor, Integer patch, String branch ) {
+        this.major = major
+        this.minor = minor
+        this.patch = patch
+        this.branch = branch
+    }
+
+    @Override
+    String toString() {
+        String release = '-SNAPSHOT'
+        if ( branch == 'master' ) {
+            release = '.RELEASE'
+        }
+        else if ( branch == 'development' ) {
+            release = '.MILESTONE'
+        }
+        else if ( branch == 'release-candidate' ) {
+            release = '.RC'
+        }
+        "${major}.${minor}.${patch}${release}"
+    }
+}
+
+version = new ProjectVersion( major.toInteger(), minor.toInteger(), patch.toInteger(), branch.toString() )

@@ -7,18 +7,19 @@ buildscript {
 	  }
 }
 
-// auto-generate Git commit inforation
+// auto-generate Git commit information
 plugins {
 	id "com.gorylenko.gradle-git-properties" version "1.4.17"
 }
 
+apply from: "$rootDir/gradle/version.gradle"
 apply plugin: 'groovy'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+
 group = 'com.example'
 description = 'Provides a REST API using a non-reactive programming model.'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
