@@ -1,0 +1,17 @@
+---
+spring:
+    profiles: default
+server:
+    port: 8000
+
+---
+spring:
+    profiles: test
+server:
+    port: 9000
+
+---
+spring:
+    profiles: production
+server:
+    port: 0
