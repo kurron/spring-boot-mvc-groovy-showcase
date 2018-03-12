@@ -21,6 +21,15 @@ This project is an opinionated view on how to construct a Spring Boot 2 REST ser
 == Building
 == Installation
 == Tips and Tricks
+=== Service Configuration
+The service's configuration is held in `ApplicationProperties` and is configured to apply validation rules at startup, ensuring that the required information is provided.  The values are specified in `application.yml`.
+
+=== Profiles
+The service is configured to support 3 profiles:
+* development (default)
+* test
+* production
+
 == Troubleshooting
 == Change History
 == License and Credits
