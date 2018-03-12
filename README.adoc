@@ -26,6 +26,7 @@ The service's configuration is held in `ApplicationProperties` and is configured
 
 === Profiles
 The service is configured to support 3 profiles:
+
 * development (default)
 * test
 * production
