@@ -63,6 +63,7 @@ dependencies {
 	compile('org.codehaus.groovy:groovy')
 
 	runtime('org.postgresql:postgresql')
+    runtime "net.logstash.logback:logstash-logback-encoder:${logstashLogbackVersion}"
 
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
 
