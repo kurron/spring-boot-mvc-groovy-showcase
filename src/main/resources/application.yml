@@ -1,4 +1,9 @@
 ---
+com:
+    example:
+        instance: ${random.uuid}
+        nested:
+            location: https://example.com/
 spring:
     profiles: default
 server:
