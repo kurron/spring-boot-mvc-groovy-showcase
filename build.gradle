@@ -12,72 +12,18 @@ plugins {
 	id "com.gorylenko.gradle-git-properties" version "1.4.17"
 }
 
+apply from: "$rootDir/gradle/repositories.gradle"
 apply from: "$rootDir/gradle/version.gradle"
-apply plugin: 'groovy'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
+apply from: "$rootDir/gradle/groovy.gradle"
+apply from: "$rootDir/gradle/spring.gradle"
+apply from: "$rootDir/gradle/spock.gradle"
 
 group = 'com.example'
 description = 'Provides a REST API using a non-reactive programming model.'
-sourceCompatibility = 1.8
-
-repositories {
-    jcenter()
-	  maven { url "https://repo.spring.io/milestone" }
-}
-
-// expand Gradle properties into the Spring configuration
-processResources {
-	expand( project.properties )
-}
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-/*
-	compile('org.springframework.boot:spring-boot-starter-cache')
-	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-	compile('org.springframework.boot:spring-boot-starter-data-neo4j')
-	compile('org.springframework.boot:spring-boot-starter-data-redis')
-	compile('org.springframework.boot:spring-boot-starter-hateoas')
-	compile('org.springframework.boot:spring-boot-starter-security')
-*/	
-	compile('org.springframework.boot:spring-boot-starter-web')
-	/*
-	compile('org.liquibase:liquibase-core')
-	compile('org.springframework.cloud:spring-cloud-starter-aws')
-	compile('org.springframework.cloud:spring-cloud-starter-aws-jdbc')
-	compile('org.springframework.cloud:spring-cloud-starter-aws-messaging')
-	compile('org.springframework.cloud:spring-cloud-starter-config')
-	compile('org.springframework.cloud:spring-cloud-starter-consul-config')
-	compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
-	compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix-dashboard')
-	compile('org.springframework.cloud:spring-cloud-starter-netflix-turbine-stream')
-	compile('org.springframework.cloud:spring-cloud-starter-vault-config')
-	compile('org.springframework.retry:spring-retry')
-	compile('org.springframework.session:spring-session-data-redis')
-	compile('org.springframework.statemachine:spring-statemachine-starter')
-	*/
-	compile('org.codehaus.groovy:groovy')
-
 	runtime('org.postgresql:postgresql')
     runtime "net.logstash.logback:logstash-logback-encoder:${logstashLogbackVersion}"
 
-	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
-
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.springframework.cloud:spring-cloud-contract-wiremock')
-	testCompile('org.springframework.cloud:spring-cloud-starter-contract-stub-runner')
-	testCompile('org.springframework.cloud:spring-cloud-starter-contract-verifier')
-	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
-	testCompile('org.springframework.security:spring-security-test')
-}
-
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.statemachine:spring-statemachine-bom:${springStatemachineVersion}"
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
+    testCompile "org.kurron:tools-groovy:${toolsGroovyVersion}"
 }

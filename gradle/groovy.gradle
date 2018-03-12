@@ -1,0 +1,62 @@
+apply plugin: 'groovy'
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all::indy"
+}
+
+compileGroovy {
+    groovyOptions.configurationScript = file( "$rootDir/gradle/groovyCompilerConfiguration.groovy" )
+}
+
+compileGroovy.groovyOptions.optimizationOptions['indy'] = true
+compileTestGroovy.groovyOptions.optimizationOptions['indy'] = true
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+compileGroovy.options*.compilerArgs = ['-Xlint:deprecation','-encoding', 'UTF-8']
+compileTestGroovy.options*.compilerArgs = ['-Xlint:deprecation','-encoding', 'UTF-8']
+
+ext.sharedManifest = manifest {
+    attributes( 'Implementation-Title': project.name, 'Implementation-Version': project.version )
+}
+
+test {
+    useJUnit {
+        includeCategories 'org.kurron.categories.UnitTest'
+    }
+    testLogging {
+        showStandardStreams = false
+        exceptionFormat = 'full'
+    }
+    reports.html.setDestination( file( "$buildDir/reports/unitTests" ) )
+
+    // set heap size for the test JVM(s)
+    minHeapSize = "128m"
+    maxHeapSize = "512m"
+}
+
+//task allIntegrationTests( type: Test, dependsOn: [build, startIntegrationTestResources] ) {
+task allIntegrationTests( type: Test, dependsOn: [build] ) {
+    group 'Verification'
+    description = 'Runs the all integration tests.'
+    useJUnit {
+        includeCategories 'org.kurron.categories.InboundIntegrationTest',
+                'org.kurron.categories.OutboundIntegrationTest'
+    }
+    testLogging {
+        showStandardStreams = false
+        exceptionFormat = 'full'
+    }
+    reports.html.setDestination( file( "$buildDir/reports/integrationTests" ) )
+    // copy into forked child process
+    doFirst {
+        systemProperties['spring.profiles.active'] = System.properties['spring.profiles.active'] ?: 'default'
+
+        //
+        // When running inside Docker, the JVM has a hard time figuring out out what HOME is so we set it
+        // by hand.  Here, we propagate that value to the test JVMs.
+        systemProperties['user.home'] = System.properties['user.home'] ?: '/tmp'
+        logger.quiet "JVM system property user.home is set to ${systemProperties['user.home']}"
+    }
+}
