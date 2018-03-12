@@ -30,8 +30,42 @@ The service is configured to support 3 profiles:
 * test
 * production
 
-=== Acutator Endpoints
+=== Actuator Endpoints
 By default, all endpoints are exposed over HTTP.  You might want to trim that list down for the production profile.  The endpoints base path is `/operations` and not the usual `/actuator`.
+
+=== Info Endpoint
+The info endpoint has been configured to provide Operations with various pieces of potentially useful information.
+
+---
+{
+    "git": {
+        "branch": "master",
+        "commit": {
+            "id": "16a7b87",
+            "time": "2018-03-12T20:01:24Z"
+        }
+    },
+    "java-runtime": {
+        "vendor": "Azul Systems, Inc.",
+        "version": "1.8.0_162"
+    },
+    "operating-system": {
+        "architecture": "amd64",
+        "name": "Linux",
+        "version": "4.4.0-112-generic"
+    },
+    "service": {
+        "description": "Provides a REST API using a non-reactive programming model.",
+        "name": "rest-service",
+        "version": "0.0.0-SNAPSHOT"
+    },
+    "user": {
+        "home-directory": "/home/vagrant",
+        "name": "vagrant",
+        "working-directory": "/home/vagrant/GitHub/spring-boot-mvc-groovy-showcase"
+    }
+}
+---
 
 == Troubleshooting
 == Change History
