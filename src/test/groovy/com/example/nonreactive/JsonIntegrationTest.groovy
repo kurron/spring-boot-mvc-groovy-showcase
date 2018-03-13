@@ -6,13 +6,11 @@ import org.junit.experimental.categories.Category
 import org.kurron.categories.OutboundIntegrationTest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.json.JsonTest
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.json.BasicJsonTester
 import org.springframework.boot.test.json.JacksonTester
 import spock.lang.Specification
 
 @Category( OutboundIntegrationTest )
-@SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE )
 @JsonTest
 class JsonIntegrationTest extends Specification {
 
