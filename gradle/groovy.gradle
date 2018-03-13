@@ -17,10 +17,6 @@ targetCompatibility = '1.8'
 compileGroovy.options*.compilerArgs = ['-Xlint:deprecation','-encoding', 'UTF-8']
 compileTestGroovy.options*.compilerArgs = ['-Xlint:deprecation','-encoding', 'UTF-8']
 
-ext.sharedManifest = manifest {
-    attributes( 'Implementation-Title': project.name, 'Implementation-Version': project.version )
-}
-
 test {
     useJUnit {
         includeCategories 'org.kurron.categories.UnitTest'

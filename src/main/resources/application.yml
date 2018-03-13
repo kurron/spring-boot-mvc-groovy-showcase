@@ -5,12 +5,17 @@ info:
         description: ${description}
         version: ${version}
 service:
-    instance: \${random.uuid}
-    timeout: \${random.int[10,60]}s
+ # these work fine from the command-line but puke in IDEA
+ #   instance: \${random.uuid}
+ #   timeout: \${random.int[10,60]}s
     nested:
         location: https://example.com/
 spring:
     profiles: default
+    jackson:
+        serialization:
+            indent_output: true
+        default-property-inclusion: non_empty
 server:
     port: 8000
 management:

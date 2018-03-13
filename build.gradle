@@ -14,6 +14,7 @@ plugins {
 
 apply from: "$rootDir/gradle/repositories.gradle"
 apply from: "$rootDir/gradle/version.gradle"
+apply from: "$rootDir/gradle/dependency-exclusions.gradle"
 apply from: "$rootDir/gradle/groovy.gradle"
 apply from: "$rootDir/gradle/spring.gradle"
 apply from: "$rootDir/gradle/spock.gradle"
@@ -26,4 +27,13 @@ dependencies {
     runtime "net.logstash.logback:logstash-logback-encoder:${logstashLogbackVersion}"
 
     testCompile "org.kurron:tools-groovy:${toolsGroovyVersion}"
+}
+
+// trying to manage default tasks within separate Gradle files is too complex so I'm doing it here
+defaultTasks << 'clean'
+defaultTasks << 'build'
+
+if ( 'true' == runIntegrationTests ) {
+    defaultTasks << 'allIntegrationTests'
+    //allIntegrationTests.finalizedBy destroyIntegrationTestResources
 }

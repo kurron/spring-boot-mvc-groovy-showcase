@@ -21,14 +21,14 @@ class ApplicationProperties {
      * Unique id of the running instance.
      */
     @NotNull
-    UUID instance
+    UUID instance = UUID.randomUUID()
 
     /**
      * How long to wait, in seconds, for downstream services.
      */
     @NotNull
     @DurationUnit( ChronoUnit.SECONDS )
-    Duration timeout
+    Duration timeout = Duration.ofSeconds( 60 )
 
     @Valid
     final Nested nested = new Nested()
