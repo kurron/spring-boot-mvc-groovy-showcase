@@ -1,4 +1,4 @@
-package com.example.nonreactive
+package com.example.nonreactive.shared
 
 import groovy.transform.Canonical
 import java.time.Duration
