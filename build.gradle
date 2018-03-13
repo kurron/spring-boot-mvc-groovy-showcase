@@ -12,6 +12,11 @@ plugins {
 	id "com.gorylenko.gradle-git-properties" version "1.4.17"
 }
 
+// for Spring REST Docs
+plugins {
+	id "org.asciidoctor.convert" version "1.5.6"
+}
+
 apply from: "$rootDir/gradle/repositories.gradle"
 apply from: "$rootDir/gradle/version.gradle"
 apply from: "$rootDir/gradle/dependency-exclusions.gradle"

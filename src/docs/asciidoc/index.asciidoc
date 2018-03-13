@@ -1,0 +1,23 @@
+:toc:
+:numbered:
+:source-highlighter: coderay
+:hal-link: http://stateless.co/hal_specification.html
+:json-schema-link: http://json-schema.org/
+:alps-link: http://alps.io/
+:groovy-link: http://groovy-lang.org/
+
+= Foo API Guide
+
+== Overview
+
+The Foo API allows you to fetch information about items that have been published within the system.
+The API adheres as closely as possible to standard HTTP and REST conventions, making writing applications easy.
+The API uses the {hal-link}[Hypertext Application Language (HAL)] as its
+interchange format, providing an excellent medium for applications to consume the information and providing
+a robust mechanism to handle any changing URLs.
+
+=== Foo Resource Structure
+Each foo will take the following form. To keep the document readable, these fields will not be
+discussed anywhere else.
+
+operation::get-instance[snippets='http-request,http-response,curl-request,httpie-request']

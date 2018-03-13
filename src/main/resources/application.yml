@@ -17,7 +17,7 @@ spring:
             indent_output: true
         default-property-inclusion: non_empty
 server:
-    port: 8000
+    port: 8080
 management:
     endpoints:
         web:

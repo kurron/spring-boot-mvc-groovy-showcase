@@ -15,7 +15,7 @@ import spock.lang.Specification
 
 @Category( DocumentationTest )
 @WebMvcTest( controllers = [InboundGateway] )
-@AutoConfigureRestDocs
+@AutoConfigureRestDocs( uriScheme = 'https', uriHost = 'api.example.com', uriPort = 443 )
 class InboundGatewayDocumentationTest extends Specification {
 
 
