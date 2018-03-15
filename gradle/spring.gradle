@@ -6,6 +6,11 @@ processResources {
     expand( project.properties )
 }
 
+// automatically create a META-INF/build-info.properties file -- may increase build times.  See documentation for details.
+springBoot {
+    buildInfo()
+}
+
 dependencies {
     asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 
