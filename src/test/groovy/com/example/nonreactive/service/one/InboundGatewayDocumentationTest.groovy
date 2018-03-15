@@ -10,6 +10,8 @@ import org.kurron.categories.DocumentationTest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.test.context.TestConfiguration
+import org.springframework.context.annotation.Bean
 import org.springframework.test.web.servlet.MockMvc
 import spock.lang.Specification
 
@@ -35,5 +37,14 @@ class InboundGatewayDocumentationTest extends Specification {
         mvc.perform( get( '/instance' ) )
            .andExpect( status().isOk() )
            .andDo( document( 'get-instance' ) )
+    }
+
+    @TestConfiguration
+    static class Configuration {
+
+        @Bean
+        MockMeterRegistry mockMeterRegistry() {
+            new MockMeterRegistry()
+        }
     }
 }
