@@ -29,6 +29,34 @@ mssql-jdbc.version = 6.2.2.jre8
 
 == Installation
 == Tips and Tricks
+=== Package Layout
+The Spring documentation suggest grouping your files by "feature", making it easier to extract logic into microservices later.
+
+----
+com
+ +- example
+     +- myapplication
+         |
+         +- Application.java
+         +- WebConfiguration.java
+         +- PersistenceConfiguration.java
+         |
+         +- shared
+         |   +- ApplicationProperties.java
+         |
+         +- customer
+         |   +- Customer.java
+         |   +- CustomerController.java
+         |   +- CustomerService.java
+         |   +- CustomerRepository.java
+         |
+         +- order
+             +- Order.java
+             +- OrderController.java
+             +- OrderService.java
+             +- OrderRepository.java
+----
+
 === Service Configuration
 The service's configuration is held in `ApplicationProperties` and is configured to apply validation rules at startup, ensuring that the required information is provided.  The values are specified in `application.yml`.
 
