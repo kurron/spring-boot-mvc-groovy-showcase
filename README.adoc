@@ -7,7 +7,7 @@
 :warning-caption: :warning:
 :caution-caption: :fire:
 
-= Spring Boot 2Showcase
+= Spring Boot 2 Showcase
 Ron Kurr <rkurr@jvmguy.com>
 
 toc::[]
