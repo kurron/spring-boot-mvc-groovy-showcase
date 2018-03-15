@@ -71,6 +71,9 @@ The info endpoint has been configured to provide Operations with various pieces 
 === Prometheus Endpoint
 https://prometheus.io/[Prometheus] can configured to poll the `/operations/prometheus` endpoint, providing insight into the service's internals and JVM.
 
+=== Counters and Gages
+The `InboundGateway` shows how to construct a `Counter` that can be used in metrics collection and analysis.
+
 === Structured Logging
 The service has been configured to use a https://github.com/logstash/logstash-logback-encoder[Logback JSON encoder] that emits logs in a structured format that easily be parsed by Logstash and other distributed logging stacks.  Edit `logback-logstash.xml` to alter the format.
 
@@ -88,6 +91,7 @@ There are samples of how to create auto-configured tests, which only test a "sli
 * REST client test
 * Web MVC test
 * REST documentation test
+* JSON test
 
 == Troubleshooting
 == Change History
