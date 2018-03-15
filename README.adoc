@@ -88,6 +88,7 @@ The service has been configured to use a https://github.com/logstash/logstash-lo
 
 === Auto-configured Tests
 There are samples of how to create auto-configured tests, which only test a "slice" of the application.
+
 * REST client test
 * Web MVC test
 * REST documentation test
