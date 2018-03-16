@@ -6,7 +6,12 @@ import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestOperations
 
-class OutboundGateway implements  UserPort {
+/**
+ * The responsibility of an outbound gateway to translate the internal model into the
+ * communication technology used by the external service.  The idea is to insulate the core
+ * from changes in external messaging format and protocol enhancements.
+ */
+class OutboundGateway implements UserPort {
 
     private final RestOperations template
 
@@ -15,8 +20,8 @@ class OutboundGateway implements  UserPort {
     }
 
     @Override
-    UserModel fetchUser() {
-        ResponseEntity<UserDTO> response = template.getForEntity( 'https://randomuser.me/api', UserDTO )
+    UserModel fetchUser( String userID ) {
+        ResponseEntity<UserDTO> response = template.getForEntity( 'https://randomuser.me/api?seed={userID}', UserDTO, userID )
         def dto = response.body.results.first()
         new UserModel( email: dto.email, username: dto.login.username, password: dto.login.password )
     }

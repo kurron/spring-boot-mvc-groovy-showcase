@@ -8,8 +8,13 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
 
+/**
+ * An inbound gateway is responsible for converting a communication technology, such as REST, into the internal
+ * model that the core uses.  The idea is to insulate the core from changes to protocols and external message formats.
+ */
 @RestController
 class InboundGateway {
 
@@ -37,10 +42,10 @@ class InboundGateway {
         new ResponseEntity<String>( configuration.instance as String, HttpStatus.OK )
     }
 
-    @GetMapping( path = '/user', produces = [MediaType.APPLICATION_JSON_VALUE] )
-    ResponseEntity<HypermediaControl> fetchUser() {
+    @GetMapping( path = '/user/{userID}', produces = [MediaType.APPLICATION_JSON_VALUE] )
+    ResponseEntity<HypermediaControl> fetchUser( @PathVariable String userID ) {
         counter.increment()
-        def model = processor.loadUserData( 'FOO' )
+        def model = processor.loadUserData( userID )
         def user = new HypermediaControl.User( email: model.email, username: model.username )
         def dto = new HypermediaControl( user: user )
         new ResponseEntity<HypermediaControl>( dto, HttpStatus.OK )

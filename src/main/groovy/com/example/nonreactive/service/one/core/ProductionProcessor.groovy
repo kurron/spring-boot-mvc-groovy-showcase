@@ -4,7 +4,7 @@ import com.example.nonreactive.service.one.shared.UserModel
 import com.example.nonreactive.service.one.shared.UserPort
 
 /**
- * Core component that holds key business logic, leaving the plumbing
+ * Core component that holds key business logic, leaving the integration plumbing
  * to the gateways.
  */
 class ProductionProcessor implements Processor {
@@ -19,7 +19,7 @@ class ProductionProcessor implements Processor {
     }
 
     @Override
-    UserModel loadUserData( String userid ) {
-        downstream.fetchUser()
+    UserModel loadUserData( String userID ) {
+        downstream.fetchUser( userID )
     }
 }
