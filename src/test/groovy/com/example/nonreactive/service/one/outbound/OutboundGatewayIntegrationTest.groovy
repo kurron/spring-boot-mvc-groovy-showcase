@@ -33,8 +33,63 @@ class OutboundGatewayIntegrationTest extends Specification {
     void fetchUser() {
         expect:
         server.expect( requestTo('https://randomuser.me/api' ) )
-              .andRespond( withSuccess( 'hello', APPLICATION_JSON ) )
+              .andRespond( withSuccess( canned, APPLICATION_JSON ) )
         def response = service.fetchUser()
-        response == '<200,hello,{Content-Type=[application/json]}>'
+        with( response ) {
+            username == 'orangecat512'
+            password == 'blazers'
+            email == 'luna.richard@example.com'
+        }
     }
+
+    static final canned =
+'''
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": {
+        "title": "mademoiselle",
+        "first": "luna",
+        "last": "richard"
+      },
+      "location": {
+        "street": "1126 rue dugas-montbel",
+        "city": "bussy-chardonney",
+        "state": "thurgau",
+        "postcode": 2020
+      },
+      "email": "luna.richard@example.com",
+      "login": {
+        "username": "orangecat512",
+        "password": "blazers",
+        "salt": "LYKSYov3",
+        "md5": "3301ee205ffb601a68d27088af05cf01",
+        "sha1": "cbd3cf4b9693cc7d5c825800f097865212f449a8",
+        "sha256": "e4ab7edf5252638adfe8d82e41c0d0d2fc4e124d64b3cc7ddafff0c3ce88d6ed"
+      },
+      "dob": "1944-09-27 06:33:06",
+      "registered": "2006-12-07 02:34:57",
+      "phone": "(778)-334-8279",
+      "cell": "(893)-225-0426",
+      "id": {
+        "name": "AVS",
+        "value": "756.AACR.NODD.82"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/44.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/44.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/44.jpg"
+      },
+      "nat": "CH"
+    }
+  ],
+  "info": {
+    "seed": "281b549df15ea3ac",
+    "results": 1,
+    "page": 1,
+    "version": "1.1"
+  }
+}
+'''
 }
