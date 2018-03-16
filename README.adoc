@@ -20,7 +20,7 @@ This project is an opinionated view on how to construct a Spring Boot 2 REST ser
 
 == Building
 === Version Overrides
-If you don't like the version of a dependency that Spring is pulling, you can override it.  Look at the https://github.com/spring-projects/spring-boot/blob/v2.0.0.RELEASE/spring-boot-project/spring-boot-dependencies/pom.xml[BOM file] to determine which property to set and specify your own version in `gradle.properties`.
+If you don't like the version of a dependency that Spring is pulling in, you can override it.  Look at the https://github.com/spring-projects/spring-boot/blob/v2.0.0.RELEASE/spring-boot-project/spring-boot-dependencies/pom.xml[BOM file] to determine which property to set and specify your own version in `gradle.properties`.
 
 ----
 groovy.version = 2.4.14
