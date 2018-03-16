@@ -20,4 +20,9 @@ a robust mechanism to handle any changing URLs.
 Each foo will take the following form. To keep the document readable, these fields will not be
 discussed anywhere else.
 
-operation::get-instance[snippets='http-request,http-response,curl-request,httpie-request']
+include::{snippets}/get-instance/curl-request.adoc[]
+include::{snippets}/get-instance/http-request.adoc[]
+include::{snippets}/get-instance/http-response.adoc[]
+include::{snippets}/get-instance/httpie-request.adoc[]
+include::{snippets}/get-instance/request-body.adoc[]
+include::{snippets}/get-instance/response-body.adoc[]
