@@ -1,5 +1,6 @@
-package com.example.nonreactive.service.one
+package com.example.nonreactive.service.one.outbound
 
+import com.example.nonreactive.service.one.UserPort
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.web.client.RestOperations
 

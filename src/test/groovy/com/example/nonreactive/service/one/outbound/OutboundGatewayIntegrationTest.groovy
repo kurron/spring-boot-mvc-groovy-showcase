@@ -1,4 +1,4 @@
-package com.example.nonreactive.service.one
+package com.example.nonreactive.service.one.outbound
 
 import static org.springframework.http.MediaType.APPLICATION_JSON
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo

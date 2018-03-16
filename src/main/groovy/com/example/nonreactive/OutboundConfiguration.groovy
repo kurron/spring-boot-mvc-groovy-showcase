@@ -1,6 +1,6 @@
 package com.example.nonreactive
 
-import com.example.nonreactive.service.one.OutboundGateway
+import com.example.nonreactive.service.one.outbound.OutboundGateway
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
