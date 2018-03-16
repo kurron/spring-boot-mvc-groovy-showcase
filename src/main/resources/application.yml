@@ -22,10 +22,17 @@ spring:
         banner-mode: "off"
 
 server:
+    compression:
+        enabled: true
+        mime-types: "application/json,application/hal+json"
+        min-response-size: 512
     port: 8080
+    servlet:
+        context-path: /
     tomcat:
         accesslog:
             enabled: false
+    use-forward-headers: true
 
 management:
     endpoints:
