@@ -1,6 +1,6 @@
 package com.example.nonreactive.service.one.outbound
 
-import com.example.nonreactive.service.one.UserPort
+import com.example.nonreactive.service.one.shared.UserPort
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.web.client.RestOperations
 
