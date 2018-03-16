@@ -4,7 +4,6 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-import com.example.nonreactive.shared.ApplicationProperties
 import org.junit.experimental.categories.Category
 import org.kurron.categories.DocumentationTest
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,12 +23,8 @@ class InboundGatewayDocumentationTest extends Specification {
     @Autowired
     private MockMvc mvc
 
-    @Autowired
-    private ApplicationProperties configuration
-
     void setup() {
         assert mvc
-        assert configuration
     }
 
     void documentGet() {
