@@ -3,7 +3,10 @@ apply plugin: 'io.spring.dependency-management'
 
 // expand Gradle properties into the Spring configuration
 processResources {
-    expand( project.properties )
+    // restrict the copy to the configuration file otherwise you end up having issues copying other resources
+    filesMatching( '**/application.yml' ) {
+        expand( project.properties )
+    }
 }
 
 // automatically create a META-INF/build-info.properties file -- may increase build times.  See documentation for details.
