@@ -10,6 +10,8 @@ service:
  #   timeout: \${random.int[10,60]}s
     nested:
         location: https://example.com/
+    logging:
+        queueSize: 2048
 spring:
     profiles: default
     jackson:

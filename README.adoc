@@ -28,9 +28,12 @@ mssql-jdbc.version = 6.2.2.jre8
 ----
 
 == Installation
-=== Package Layout
-== Profile-specific Logging
+== Tips and Tricks
+=== Profile-specific Logging
 Look at `logback-spring.xml` so see how to specify different logging levels based on the active Spring profile.  The expressions can get sophisticated but this sample tones down the message level as we approach the production profile.
+
+=== Dynamic Logging Configuration
+Aspects of the logging configuration can be provided at launch-time via the Spring environment.  Look at `logback-spring.xml` and how the `queueSize` property is derived fom the `application.yml` file.
 
 === Package Layout
 The Spring documentation suggest grouping your files by "feature", making it easier to extract logic into microservices later.

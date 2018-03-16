@@ -23,6 +23,8 @@
         </encoder>
     </appender>
 
+
+    <!-- Spring profile-specific settings -->
     <springProfile name="default">
         <logger name="com.example" level="ALL"/>
         <logger name="org.springframework" level="DEBUG"/>
@@ -38,11 +40,13 @@
         <logger name="org.springframework" level="WARN"/>
     </springProfile>
 
+    <!-- read the value from the Spring environment, using a default if not specified -->
+    <springProperty scope="context" name="queueSize" source="service.logging.queueSize" defaultValue="1024"/>
 
     <!-- handles sending messages using background threads -->
     <appender name="ASYNC-CONSOLE" class="ch.qos.logback.classic.AsyncAppender">
         <!-- The maximum capacity of the blocking queue. By default, queueSize is set to 256. -->
-        <queueSize>1024</queueSize>
+        <queueSize>\${queueSize}</queueSize>
         <appender-ref ref="CONSOLE"/>
     </appender>
 
