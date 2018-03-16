@@ -1,6 +1,6 @@
 package com.example.nonreactive
 
-import com.example.nonreactive.service.one.InboundGateway
+import com.example.nonreactive.service.one.inbound.InboundGateway
 import com.example.nonreactive.shared.ApplicationProperties
 import io.micrometer.core.instrument.MeterRegistry
 import org.springframework.beans.factory.annotation.Autowired

@@ -1,7 +1,9 @@
-package com.example.nonreactive.service.one
+package com.example.nonreactive.service.one.inbound
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 
+import com.example.nonreactive.service.one.MockMeterRegistry
+import com.example.nonreactive.service.one.inbound.InboundGateway
 import com.example.nonreactive.shared.ApplicationProperties
 import org.junit.experimental.categories.Category
 import org.kurron.categories.InboundIntegrationTest

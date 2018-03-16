@@ -1,4 +1,4 @@
-package com.example.nonreactive.service.one
+package com.example.nonreactive.service.one.inbound
 
 import com.example.nonreactive.shared.ApplicationProperties
 import io.micrometer.core.instrument.Counter
