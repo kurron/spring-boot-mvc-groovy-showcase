@@ -20,6 +20,7 @@ class ProductionProcessor implements Processor {
 
     @Override
     UserModel loadUserData( String userID ) {
-        downstream.fetchUser( userID )
+        // another option would be to provide a default object instead of throwing an error
+        downstream.fetchUser( userID ).orElseThrow( { new IllegalStateException( "No such user: ${userID}" )  } )
     }
 }

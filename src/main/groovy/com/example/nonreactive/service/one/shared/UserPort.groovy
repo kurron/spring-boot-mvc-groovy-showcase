@@ -8,7 +8,7 @@ interface UserPort {
     /**
      * Load data for the specified user.
      * @param userID user to load.
-     * @return loaded user.
+     * @return loaded user. The use of Optional is just one alternative for handling an unknown user.
      */
-    UserModel fetchUser( String userID )
+    Optional<UserModel> fetchUser( String userID )
 }

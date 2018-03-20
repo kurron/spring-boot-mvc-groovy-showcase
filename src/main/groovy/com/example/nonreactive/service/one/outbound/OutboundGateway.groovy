@@ -24,9 +24,10 @@ class OutboundGateway implements UserPort {
     }
 
     @Override
-    UserModel fetchUser( String userID ) {
+    Optional<UserModel> fetchUser( String userID ) {
+        //TODO: install a circuit breaker here
         ResponseEntity<UserDTO> response = template.getForEntity( 'https://randomuser.me/api?seed={userID}', UserDTO, userID )
         def dto = response.body.results.first()
-        new UserModel( email: dto.email, username: dto.login.username, password: dto.login.password )
+        Optional.of( new UserModel( email: dto.email, username: dto.login.username, password: dto.login.password ) )
     }
 }

@@ -39,7 +39,7 @@ class OutboundGatewayIntegrationTest extends Specification {
         expect:
         server.expect( requestTo('https://randomuser.me/api?seed=orangecat512' ) )
               .andRespond( withSuccess( canned, APPLICATION_JSON ) )
-        def response = service.fetchUser( 'orangecat512' )
+        def response = service.fetchUser( 'orangecat512' ).get()
         with( response ) {
             username == 'orangecat512'
             password == 'blazers'
