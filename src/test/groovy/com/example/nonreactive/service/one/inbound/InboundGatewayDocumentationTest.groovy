@@ -5,7 +5,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 import com.example.nonreactive.service.one.MockMeterRegistry
-import com.example.nonreactive.service.one.inbound.InboundGateway
 import org.junit.experimental.categories.Category
 import org.kurron.categories.DocumentationTest
 import org.springframework.beans.factory.annotation.Autowired
@@ -42,6 +41,11 @@ class InboundGatewayDocumentationTest extends Specification {
         @Bean
         MockMeterRegistry mockMeterRegistry() {
             new MockMeterRegistry()
+        }
+
+        @Bean
+        ProcessorServiceStub processorServiceStub() {
+            new ProcessorServiceStub()
         }
     }
 }

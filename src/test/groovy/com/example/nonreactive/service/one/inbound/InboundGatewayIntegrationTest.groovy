@@ -48,5 +48,10 @@ class InboundGatewayIntegrationTest extends Specification {
         MockMeterRegistry mockMeterRegistry() {
             new MockMeterRegistry()
         }
+
+        @Bean
+        ProcessorServiceStub processorServiceStub() {
+            new ProcessorServiceStub()
+        }
     }
 }
