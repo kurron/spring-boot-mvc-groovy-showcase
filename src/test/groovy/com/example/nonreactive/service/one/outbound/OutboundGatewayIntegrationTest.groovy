@@ -32,9 +32,9 @@ class OutboundGatewayIntegrationTest extends Specification {
     // another mechanism for providing a Service Stub.  The actual service is never hit, being completely stubbed.
     void fetchUser() {
         expect:
-        server.expect( requestTo('https://randomuser.me/api' ) )
+        server.expect( requestTo('https://randomuser.me/api?seed=orangecat512' ) )
               .andRespond( withSuccess( canned, APPLICATION_JSON ) )
-        def response = service.fetchUser()
+        def response = service.fetchUser( 'orangecat512' )
         with( response ) {
             username == 'orangecat512'
             password == 'blazers'
