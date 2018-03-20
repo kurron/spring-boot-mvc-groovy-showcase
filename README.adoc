@@ -164,6 +164,28 @@ The service has been configured to use a https://github.com/logstash/logstash-lo
 }
 ----
 
+=== Profile-specific Logging
+Edit the `logback-spring.xml` file to use different logging levels based on the active profiles.
+
+.logback-spring.xml
+----
+    <springProfile name="default">
+        <logger name="com.example" level="ALL"/>
+        <logger name="org.springframework" level="INFO"/>
+        <logger name="org.springframework.web.client.RestTemplate" level="ALL"/>
+    </springProfile>
+
+    <springProfile name="test">
+        <logger name="com.example" level="INFO"/>
+        <logger name="org.springframework" level="INFO"/>
+    </springProfile>
+
+    <springProfile name="production">
+        <logger name="com.example" level="WARN"/>
+        <logger name="org.springframework" level="WARN"/>
+    </springProfile>
+----
+
 === Auto-configured Tests
 There are samples of how to create auto-configured tests, which only test a "slice" of the application.
 
