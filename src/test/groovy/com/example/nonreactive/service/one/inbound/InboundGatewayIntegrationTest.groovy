@@ -15,6 +15,9 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import spock.lang.Specification
 
+/**
+ * Integration test of the {@link InboundGateway} object.
+ */
 @Category( InboundIntegrationTest )
 @WebMvcTest( controllers = [InboundGateway] )
 class InboundGatewayIntegrationTest extends Specification {

@@ -9,10 +9,14 @@ import org.springframework.web.client.RestOperations
 /**
  * The responsibility of an outbound gateway to translate the internal model into the
  * communication technology used by the external service.  The idea is to insulate the core
- * from changes in external messaging format and protocol enhancements.
+ * from changes in external messaging format and protocol enhancements. A production implementation of the
+ * {@link UserPort} service.
  */
 class OutboundGateway implements UserPort {
 
+    /**
+     * Manages HTTP interactions.
+     */
     private final RestOperations template
 
     OutboundGateway( RestTemplateBuilder builder ) {

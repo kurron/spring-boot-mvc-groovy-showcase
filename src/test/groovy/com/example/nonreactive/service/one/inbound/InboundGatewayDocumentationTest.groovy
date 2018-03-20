@@ -15,6 +15,9 @@ import org.springframework.context.annotation.Bean
 import org.springframework.test.web.servlet.MockMvc
 import spock.lang.Specification
 
+/**
+ * API documentation test of the {@link InboundGateway} object.
+ */
 @Category( DocumentationTest )
 @WebMvcTest( controllers = [InboundGateway] )
 @AutoConfigureRestDocs( uriScheme = 'https', uriHost = 'api.example.com', uriPort = 443 )

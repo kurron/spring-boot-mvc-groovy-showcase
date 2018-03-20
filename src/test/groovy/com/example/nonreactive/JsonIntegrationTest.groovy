@@ -10,6 +10,9 @@ import org.springframework.boot.test.json.BasicJsonTester
 import org.springframework.boot.test.json.JacksonTester
 import spock.lang.Specification
 
+/**
+ * An example of the new auto-configured tests.
+ */
 @Category( OutboundIntegrationTest )
 @JsonTest
 class JsonIntegrationTest extends Specification {

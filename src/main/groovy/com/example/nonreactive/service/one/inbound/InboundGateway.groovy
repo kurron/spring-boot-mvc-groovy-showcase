@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController
 /**
  * An inbound gateway is responsible for converting a communication technology, such as REST, into the internal
  * model that the core uses.  The idea is to insulate the core from changes to protocols and external message formats.
+ * On the inbound side, direction of the Ports and Adapters connection of the Hexagonal architecture is Adapter->Port.
+ * We are adapting from HTTP to a call to a Port.
  */
 @RestController
 class InboundGateway {

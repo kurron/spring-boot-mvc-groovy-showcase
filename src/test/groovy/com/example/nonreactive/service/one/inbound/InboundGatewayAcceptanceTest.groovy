@@ -1,4 +1,4 @@
-package com.example.nonreactive.service.one
+package com.example.nonreactive.service.one.inbound
 
 import com.example.nonreactive.shared.ApplicationProperties
 import org.junit.experimental.categories.Category
@@ -12,6 +12,11 @@ import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpStatus
 import spock.lang.Specification
 
+/**
+ * I'm calling this an acceptance test because we are hitting an actual external endpoint.
+ * A test of the {@link InboundGateway} object. I probably need change this to an integration test
+ * and call the one using a mock service something else.
+ */
 @Category( InboundIntegrationTest )
 @SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class InboundGatewayAcceptanceTest extends Specification {

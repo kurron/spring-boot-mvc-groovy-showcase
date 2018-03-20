@@ -13,6 +13,11 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.client.MockRestServiceServer
 import spock.lang.Specification
 
+/**
+ * Integration test of the {@link OutboundGateway} object.  This test is different from what we are used to because
+ * a fake server is involved.  There should be at least one test that hits a real service to verify things are working.
+ * This form smells more like a contract test than an integration test.
+ */
 @Category( OutboundIntegrationTest )
 @SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = [OutboundConfiguration])
 @RestClientTest( components = [OutboundGateway] )

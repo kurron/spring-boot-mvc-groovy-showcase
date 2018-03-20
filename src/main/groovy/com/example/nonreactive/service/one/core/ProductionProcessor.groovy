@@ -5,7 +5,7 @@ import com.example.nonreactive.service.one.shared.UserPort
 
 /**
  * Core component that holds key business logic, leaving the integration plumbing
- * to the gateways.
+ * to the gateways. Production implementation of the {@link Processor} interface.
  */
 class ProductionProcessor implements Processor {
 
