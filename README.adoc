@@ -141,6 +141,14 @@ scrape_configs:
         - targets: ['localhost:8080']
 ----
 
+=== RestTemplate Metrics
+The outbound gateway in the sample uses the `RestTemplateBuilder` which produces a `RestTemplate` that emits metric data.  In the Prometheus console, you will see something like this:
+
+.Sample Prometheus Console Output
+----
+http_client_requests_seconds_count{clientName="randomuser.me",instance="localhost:8080",job="spring",method="GET",status="200",uri="/api?seed={userID}"}	625
+----
+
 === Counters and Gages
 The `InboundGateway` shows how to construct a `Counter` that can be used in metrics collection and analysis.
 
