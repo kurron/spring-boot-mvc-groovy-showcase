@@ -18,6 +18,9 @@ spring:
         serialization:
             indent_output: true
         default-property-inclusion: non_empty
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
     main:
         banner-mode: "off"
 
