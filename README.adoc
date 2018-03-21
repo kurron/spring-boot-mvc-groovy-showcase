@@ -286,6 +286,58 @@ For the price of including an extra library, the inbound gateway supports rendin
 </HypermediaControl>
 ----
 
+=== Changing Logging Levels Dynamically
+Using REST calls, you can change the logging levels of the application dynamically.
+
+.To get a list of all loggers
+----
+http GET localhost:8080/operations/loggers
+
+{
+  "levels" : [ "OFF", "ERROR", "WARN", "INFO", "DEBUG", "TRACE" ],
+  "loggers" : {
+    "ROOT" : {
+      "configuredLevel" : "WARN",
+      "effectiveLevel" : "WARN"
+    },
+    "com" : {
+      "effectiveLevel" : "WARN"
+    },
+    "com.example" : {
+      "configuredLevel" : "TRACE",
+      "effectiveLevel" : "TRACE"
+    },
+    "com.example.nonreactive" : {
+      "configuredLevel" : "DEBUG",
+      "effectiveLevel" : "DEBUG"
+    },
+    ...
+}
+----
+
+.To get the current level for a specific logger
+----
+http GET localhost:8080/operations/loggers/com.example.nonreactive
+
+HTTP/1.1 200
+Content-Disposition: inline;filename=f.txt
+Content-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8
+Date: Wed, 21 Mar 2018 20:07:04 GMT
+Transfer-Encoding: chunked
+
+{
+    "configuredLevel": "DEBUG",
+    "effectiveLevel": "DEBUG"
+}
+----
+
+.To change the level for a specific logger
+----
+http POST localhost:8080/operations/loggers/com.example.nonreactive configuredLevel=DEBUG
+
+HTTP/1.1 204
+Date: Wed, 21 Mar 2018 20:07:46 GMT
+----
 
 == Troubleshooting
 == Change History
