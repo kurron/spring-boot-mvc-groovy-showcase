@@ -38,7 +38,7 @@ class InboundGateway {
         processor = aProcessor
     }
 
-    @GetMapping( path = '/instance', produces = [MediaType.APPLICATION_JSON_VALUE] )
+    @GetMapping( path = '/instance', produces = [MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE] )
     ResponseEntity<HypermediaControl> fetchInstanceID() {
         //throw new CustomException( 'Forced to fail!' )
         counter.increment()
@@ -46,7 +46,7 @@ class InboundGateway {
         new ResponseEntity<HypermediaControl>( dto, HttpStatus.OK )
     }
 
-    @GetMapping( path = '/user/{userID}', produces = [MediaType.APPLICATION_JSON_VALUE] )
+    @GetMapping( path = '/user/{userID}', produces = [MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE] )
     ResponseEntity<HypermediaControl> fetchUser( @PathVariable String userID ) {
         counter.increment()
         def model = processor.loadUserData( userID )

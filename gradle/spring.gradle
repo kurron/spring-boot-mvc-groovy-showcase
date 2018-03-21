@@ -59,6 +59,7 @@ dependencies {
     testCompile('org.springframework.security:spring-security-test')
 
     runtime('io.micrometer:micrometer-registry-prometheus')
+    runtime('com.fasterxml.jackson.dataformat:jackson-dataformat-xml')
     // JMX over HTTP does not appear to be that useful
     // runtime('org.jolokia:jolokia-core')
 }

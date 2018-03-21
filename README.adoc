@@ -273,6 +273,20 @@ Vary: Accept-Encoding
 }
 ----
 
+=== XML Support
+For the price of including an extra library, the inbound gateway supports rending the hypermedia control in XML form.
+
+.curl  --header "Accept:application/xml" localhost:8080/user/bob
+----
+<HypermediaControl>
+  <user-information>
+    <username>whitelion877</username>
+    <e-mail>eevi.toivonen@example.com</e-mail>
+  </user-information>
+</HypermediaControl>
+----
+
+
 == Troubleshooting
 == Change History
 == License and Credits

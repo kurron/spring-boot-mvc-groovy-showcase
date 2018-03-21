@@ -42,6 +42,6 @@ class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                                                               WebRequest request ) {
         def error = new HypermediaControl.Error( message: failure.message )
         def dto = new HypermediaControl( error: error )
-        new ResponseEntity<HypermediaControl>( dto, HttpStatus.INTERNAL_SERVER_ERROR )
+        new ResponseEntity<Object>( dto, HttpStatus.INTERNAL_SERVER_ERROR )
     }
 }
