@@ -10,6 +10,9 @@ import groovy.transform.Canonical
 @Canonical
 class HypermediaControl {
 
+    @JsonProperty( 'instance' )
+    UUID instance
+
     @JsonProperty( 'user-information' )
     User user
 
@@ -25,5 +28,8 @@ class HypermediaControl {
         String email
     }
 
-    static class Error {}
+    static class Error {
+        @JsonProperty( 'message' )
+        String message
+    }
 }

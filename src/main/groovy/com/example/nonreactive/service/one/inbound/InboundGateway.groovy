@@ -38,10 +38,12 @@ class InboundGateway {
         processor = aProcessor
     }
 
-    @GetMapping( path = '/instance', produces = [MediaType.TEXT_PLAIN_VALUE] )
-    ResponseEntity<String> fetchInstanceID() {
+    @GetMapping( path = '/instance', produces = [MediaType.APPLICATION_JSON_VALUE] )
+    ResponseEntity<HypermediaControl> fetchInstanceID() {
+        throw new CustomException( 'Forced to fail!' )
         counter.increment()
-        new ResponseEntity<String>( configuration.instance as String, HttpStatus.OK )
+        def dto = new HypermediaControl( instance: configuration.instance )
+        new ResponseEntity<HypermediaControl>( dto, HttpStatus.OK )
     }
 
     @GetMapping( path = '/user/{userID}', produces = [MediaType.APPLICATION_JSON_VALUE] )

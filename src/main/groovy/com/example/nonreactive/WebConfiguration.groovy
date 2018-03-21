@@ -1,6 +1,7 @@
 package com.example.nonreactive
 
 import com.example.nonreactive.service.one.core.Processor
+import com.example.nonreactive.service.one.inbound.CustomExceptionHandler
 import com.example.nonreactive.service.one.inbound.InboundGateway
 import com.example.nonreactive.shared.ApplicationProperties
 import io.micrometer.core.instrument.MeterRegistry
@@ -23,5 +24,10 @@ class WebConfiguration {
     @Bean
     InboundGateway inboundGateway( ApplicationProperties configuration, MeterRegistry registry, Processor processor ) {
         new InboundGateway( configuration, registry, processor )
+    }
+
+    @Bean
+    CustomExceptionHandler customExceptionHandler() {
+        new CustomExceptionHandler()
     }
 }
