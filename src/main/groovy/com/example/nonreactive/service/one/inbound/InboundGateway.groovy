@@ -40,7 +40,7 @@ class InboundGateway {
 
     @GetMapping( path = '/instance', produces = [MediaType.APPLICATION_JSON_VALUE] )
     ResponseEntity<HypermediaControl> fetchInstanceID() {
-        throw new CustomException( 'Forced to fail!' )
+        //throw new CustomException( 'Forced to fail!' )
         counter.increment()
         def dto = new HypermediaControl( instance: configuration.instance )
         new ResponseEntity<HypermediaControl>( dto, HttpStatus.OK )
