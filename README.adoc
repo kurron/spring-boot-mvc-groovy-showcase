@@ -339,6 +339,9 @@ HTTP/1.1 204
 Date: Wed, 21 Mar 2018 20:07:46 GMT
 ----
 
+=== JPA Support
+Look at `UserRepositoryIntegrationTest` for an example of how to test a JPA repository.  The application is configured to use an in-memory database so don't expect things to persist once you shutdown the application.  Look at `ProductionProcessor` to see how the gateway is used from core.
+
 == Troubleshooting
 == Change History
 == License and Credits

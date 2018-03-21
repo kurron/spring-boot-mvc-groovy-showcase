@@ -34,9 +34,9 @@ class InboundGatewayAcceptanceTest extends Specification {
 
     void fetchUser() {
         expect:
-        def response = template.getForEntity( '/instance', String )
+        def response = template.getForEntity( '/instance', HypermediaControl )
         response.statusCode == HttpStatus.OK
-        response.body == configuration.instance as String
+        response.body.instance == configuration.instance
     }
 
     @TestConfiguration
