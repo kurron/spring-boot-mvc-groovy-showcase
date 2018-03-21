@@ -31,5 +31,8 @@ class HypermediaControl {
     static class Error {
         @JsonProperty( 'message' )
         String message
+
+        @JsonProperty( 'developer-message' )
+        String developerMessage
     }
 }

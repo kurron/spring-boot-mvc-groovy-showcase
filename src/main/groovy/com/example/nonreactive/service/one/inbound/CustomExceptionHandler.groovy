@@ -21,12 +21,14 @@ class CustomExceptionHandler extends ResponseEntityExceptionHandler {
      * you would have your exceptions rooted off of a common ancestor, allowing them
      * to be handled here.
      * @param failure what when wrong.
+     * @param request details about the failed request.
      * @return the control with the error information filled in.
      */
     @ResponseBody
     @ExceptionHandler( CustomException )
-    ResponseEntity<HypermediaControl> handleFailure( CustomException failure ) {
-        def error = new HypermediaControl.Error( message: failure.message )
+    ResponseEntity<HypermediaControl> handleFailure( CustomException failure, WebRequest request ) {
+        def error = new HypermediaControl.Error( message: failure.message,
+                                                 developerMessage: request.getDescription( true ) )
         def dto = new HypermediaControl( error: error )
         new ResponseEntity<HypermediaControl>( dto, HttpStatus.INTERNAL_SERVER_ERROR )
     }
