@@ -221,6 +221,37 @@ Transfer-Encoding: chunked
 }
 ----
 
+=== Custom Health Indicator
+Look at `GoogleHealthIndicator` for an example on how to write a custom health indicator.  All it does ensure that Google can be contacted.  This is useful to check the health of downstream services that aren't covered out of the box.
+
+.http localhost:8080/operations/health
+----
+HTTP/1.1 200
+Content-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8
+Date: Wed, 21 Mar 2018 17:41:46 GMT
+Transfer-Encoding: chunked
+
+{
+    "details": {
+        "diskSpace": {
+            "details": {
+                "free": 111565172736,
+                "threshold": 10485760,
+                "total": 132371533824
+            },
+            "status": "UP"
+        },
+        "google": {
+            "details": {
+                "latency (ms)": 81
+            },
+            "status": "UP"
+        }
+    },
+    "status": "UP"
+}
+----
+
 == Troubleshooting
 == Change History
 == License and Credits

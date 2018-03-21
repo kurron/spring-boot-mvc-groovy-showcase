@@ -35,6 +35,9 @@ server:
     use-forward-headers: true
 
 management:
+    endpoint:
+        health:
+            show-details: always
     endpoints:
         web:
             exposure:
@@ -43,11 +46,19 @@ management:
 ---
 spring:
     profiles: test
+management:
+    endpoint:
+        health:
+            show-details: when-authorized
 server:
     port: 9000
 
 ---
 spring:
     profiles: production
+management:
+    endpoint:
+        health:
+            show-details: never
 server:
     port: 0

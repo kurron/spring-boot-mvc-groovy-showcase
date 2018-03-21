@@ -4,6 +4,7 @@ import com.example.nonreactive.service.one.core.ProductionProcessor
 import com.example.nonreactive.service.one.shared.UserPort
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.web.client.RestOperations
 
 /**
  * Configuration for beans that should be generally available to all "slices".
@@ -24,5 +25,10 @@ class GeneralConfiguration {
     @Bean
     CustomActuator customActuator() {
         new CustomActuator()
+    }
+
+    @Bean
+    GoogleHealthIndicator googleHealthIndicator( RestOperations template ) {
+        new GoogleHealthIndicator( template )
     }
 }
