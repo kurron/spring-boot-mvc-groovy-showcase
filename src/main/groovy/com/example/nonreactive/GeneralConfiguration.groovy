@@ -20,4 +20,9 @@ class GeneralConfiguration {
     ProductionProcessor productionProcessor( UserPort userPort ) {
         new ProductionProcessor( userPort )
     }
+
+    @Bean
+    CustomActuator customActuator() {
+        new CustomActuator()
+    }
 }

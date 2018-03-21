@@ -197,6 +197,30 @@ There are samples of how to create auto-configured tests, which only test a "sli
 === REST Template Interception
 Look at `OutboundGateway` to see how the `RestTemplateBuilder` can be used to install a custom interceptor where you can add in custom logging and metrics.
 
+=== Custom Operations Endpoint
+Look at `CustomActuator` to see an example of custom endpoint intended for Operations.  These could be used for "deep" health checks, synthetic transactions, etc.
+
+.http --verbose localhost:8080/operations/deep-health
+----
+GET /operations/deep-health HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: localhost:8080
+User-Agent: HTTPie/0.9.9
+
+
+
+HTTP/1.1 200
+Content-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8
+Date: Wed, 21 Mar 2018 16:13:55 GMT
+Transfer-Encoding: chunked
+
+{
+    "status": "Looking good"
+}
+----
+
 == Troubleshooting
 == Change History
 == License and Credits
