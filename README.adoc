@@ -194,6 +194,9 @@ There are samples of how to create auto-configured tests, which only test a "sli
 * REST documentation test
 * JSON test
 
+=== REST Template Interception
+Look at `OutboundGateway` to see how the `RestTemplateBuilder` can be used to install a custom interceptor where you can add in custom logging and metrics.
+
 == Troubleshooting
 == Change History
 == License and Credits

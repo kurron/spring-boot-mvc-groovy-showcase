@@ -19,8 +19,8 @@ class OutboundGateway implements UserPort {
      */
     private final RestOperations template
 
-    OutboundGateway( RestTemplateBuilder builder ) {
-        template = builder.build()
+    OutboundGateway( RestTemplateBuilder builder, CustomClientHttpRequestInterceptor interceptor ) {
+        template = builder.additionalInterceptors( interceptor ).build()
     }
 
     @Override
