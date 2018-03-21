@@ -2,4 +2,4 @@
 
 export JAVA_HOME=/usr/lib/jvm/azul-jdk-8
 
-./gradlew
+./gradlew --warning-mode=all
