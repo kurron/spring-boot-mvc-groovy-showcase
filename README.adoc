@@ -333,7 +333,7 @@ Transfer-Encoding: chunked
 
 .To change the level for a specific logger
 ----
-http POST localhost:8080/operations/loggers/com.example.nonreactive configuredLevel=DEBUG
+http POST localhost:8080/operations/loggers/com.example.nonreactive configuredLevel=TRACE
 
 HTTP/1.1 204
 Date: Wed, 21 Mar 2018 20:07:46 GMT
