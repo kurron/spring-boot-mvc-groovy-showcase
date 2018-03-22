@@ -345,7 +345,13 @@ Look at `UserRepositoryIntegrationTest` for an example of how to test a JPA repo
 === MongoDB Support
 Look at `VehicleRepositoryIntegrationTest` for an example of how to test a document repository.  The application is configured to use an in-memory database so don't expect things to persist once you shutdown the application.  Look at `ProductionProcessor` to see how the gateway is used from core.
 
+=== Redis Support
+Look at `ContactRepositoryIntegrationTest` for an example of how to test a key-value repository.  Unlike some of the other test, a local instance of Redis must be running in order for the test to work.  Look at `ProductionProcessor` to see how the gateway is used from core.
+
 == Troubleshooting
+=== Cannot Connect To Redis
+Unfortunately, we are not using an embedded version of Redis, so you must be running a local instance in order for things to work.  The https://hub.docker.com/_/redis/[Docker container] is probably the simplest way to do so.
+
 == Change History
 == License and Credits
 This project is licensed under the http://www.apache.org/licenses/[Apache License Version 2.0, January 2004].
