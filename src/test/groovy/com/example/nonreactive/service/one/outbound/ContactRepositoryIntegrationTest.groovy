@@ -33,7 +33,7 @@ class ContactRepositoryIntegrationTest extends Specification {
     void testReading() {
         expect:
         // since we are testing the repository, use the template and mapper to store the object
-        def persisted = new ContactEntity( username: 'one', email: 'nobody@nowhere.com', cell: '(555) 111-2222' )
+        def persisted = new ContactEntity( username: 'one', email: 'nobody@nowhere.com' )
         def mappedHash = mapper.toHash( persisted )
         template.opsForHash().putAll( 'one', mappedHash )
 

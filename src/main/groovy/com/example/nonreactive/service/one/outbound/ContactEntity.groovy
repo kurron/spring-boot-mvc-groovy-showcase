@@ -20,7 +20,4 @@ class ContactEntity {
 
     @JsonProperty( 'email' )
     String email
-
-    @JsonProperty( 'cell' )
-    String cell
 }

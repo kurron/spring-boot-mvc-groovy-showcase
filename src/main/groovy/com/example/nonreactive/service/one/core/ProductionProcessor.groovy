@@ -1,5 +1,7 @@
 package com.example.nonreactive.service.one.core
 
+import com.example.nonreactive.service.one.outbound.ContactEntity
+import com.example.nonreactive.service.one.outbound.ContactRepository
 import com.example.nonreactive.service.one.outbound.UserEntity
 import com.example.nonreactive.service.one.outbound.UserRepository
 import com.example.nonreactive.service.one.outbound.VehicleEntity
@@ -28,10 +30,16 @@ class ProductionProcessor implements Processor {
      */
     private final VehicleRepository document
 
-    ProductionProcessor( UserPort port, UserRepository aRelational, VehicleRepository aDocument ) {
+    /**
+     * Downstream service that handles key-value persistence.
+     */
+    private final ContactRepository keyValue
+
+    ProductionProcessor( UserPort port, UserRepository aRelational, VehicleRepository aDocument, ContactRepository aKeyValue ) {
         downstream = port
         relational = aRelational
         document = aDocument
+        keyValue = aKeyValue
     }
 
     @Override
@@ -46,6 +54,10 @@ class ProductionProcessor implements Processor {
         // this is just to show we can write a document database
         def vehicle = new VehicleEntity( id: model.username, make: 'Ferrari', model: '488GTB' )
         document.save( vehicle )
+
+        // this is just to show we can write a key-value database
+        def contact = new ContactEntity( username: model.username, email: model.email )
+        keyValue.save( contact )
 
         model
     }
