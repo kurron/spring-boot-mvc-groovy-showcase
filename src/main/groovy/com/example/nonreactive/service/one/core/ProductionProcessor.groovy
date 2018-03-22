@@ -2,6 +2,8 @@ package com.example.nonreactive.service.one.core
 
 import com.example.nonreactive.service.one.outbound.UserEntity
 import com.example.nonreactive.service.one.outbound.UserRepository
+import com.example.nonreactive.service.one.outbound.VehicleEntity
+import com.example.nonreactive.service.one.outbound.VehicleRepository
 import com.example.nonreactive.service.one.shared.UserModel
 import com.example.nonreactive.service.one.shared.UserPort
 
@@ -17,13 +19,19 @@ class ProductionProcessor implements Processor {
     private final UserPort downstream
 
     /**
-     * Downstream service that handles persistence.
+     * Downstream service that handles relational persistence.
      */
-    private final UserRepository database
+    private final UserRepository relational
 
-    ProductionProcessor( UserPort aDownstream, UserRepository aDatabase ) {
-        downstream = aDownstream
-        database = aDatabase
+    /**
+     * Downstream service that handles document persistence.
+     */
+    private final VehicleRepository document
+
+    ProductionProcessor( UserPort port, UserRepository aRelational, VehicleRepository aDocument ) {
+        downstream = port
+        relational = aRelational
+        document = aDocument
     }
 
     @Override
@@ -32,8 +40,12 @@ class ProductionProcessor implements Processor {
         def model = downstream.fetchUser( userID ).orElseThrow( { new IllegalStateException( "No such user: ${userID}" )  } )
 
         // this is just show we can write to a relational database
-        def entity = new UserEntity( username: model.username )
-        database.save( entity )
+        def user = new UserEntity( username: model.username )
+        relational.save( user )
+
+        // this is just to show we can write a document database
+        def vehicle = new VehicleEntity( id: model.username, make: 'Ferrari', model: '488GTB' )
+        document.save( vehicle )
 
         model
     }

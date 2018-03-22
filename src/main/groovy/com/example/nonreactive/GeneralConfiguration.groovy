@@ -2,6 +2,7 @@ package com.example.nonreactive
 
 import com.example.nonreactive.service.one.core.ProductionProcessor
 import com.example.nonreactive.service.one.outbound.UserRepository
+import com.example.nonreactive.service.one.outbound.VehicleRepository
 import com.example.nonreactive.service.one.shared.UserPort
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -19,8 +20,8 @@ class GeneralConfiguration {
     }
 
     @Bean
-    ProductionProcessor productionProcessor( UserPort userPort, UserRepository repository ) {
-        new ProductionProcessor( userPort, repository )
+    ProductionProcessor productionProcessor( UserPort port, UserRepository relational, VehicleRepository document ) {
+        new ProductionProcessor( port, relational, document )
     }
 
     @Bean
