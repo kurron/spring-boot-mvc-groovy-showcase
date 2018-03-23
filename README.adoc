@@ -351,6 +351,43 @@ Look at `ContactRepositoryIntegrationTest` for an example of how to test a key-v
 === Caching Support
 Look at `UserPort` for an example of how to enable caching.  Look at `application.yml` to see how we force the selection of the in-memory cache implementation, otherwise Redis would've been selected.
 
+=== Custom Metrics
+Look at `ProductionProcessor` for an example of how to record how long it takes for a service to run.  In this example we time things by hand but you could imagine using aspects to automatically wrap interesting parts of the code.
+
+.http localhost:8080/operations/metrics/service-timer
+----
+HTTP/1.1 200
+Content-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8
+Date: Fri, 23 Mar 2018 19:11:23 GMT
+Transfer-Encoding: chunked
+
+{
+    "availableTags": [
+        {
+            "tag": "layer",
+            "values": [
+                "core"
+            ]
+        }
+    ],
+    "measurements": [
+        {
+            "statistic": "COUNT",
+            "value": 49.0
+        },
+        {
+            "statistic": "TOTAL_TIME",
+            "value": 1.458764845
+        },
+        {
+            "statistic": "MAX",
+            "value": 1.128834074
+        }
+    ],
+    "name": "service-timer"
+}
+----
+
 == Troubleshooting
 === Cannot Connect To Redis
 Unfortunately, we are not using an embedded version of Redis, so you must be running a local instance in order for things to work.  The https://hub.docker.com/_/redis/[Docker container] is probably the simplest way to do so.

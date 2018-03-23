@@ -3,6 +3,8 @@ package com.example.nonreactive.service.one.core
 import com.example.nonreactive.service.one.outbound.SaveItPort
 import com.example.nonreactive.service.one.shared.UserModel
 import com.example.nonreactive.service.one.shared.UserPort
+import io.micrometer.core.instrument.Timer
+import java.util.function.Supplier
 
 /**
  * Core component that holds key business logic, leaving the integration plumbing
@@ -20,18 +22,30 @@ class ProductionProcessor implements Processor {
      */
     private final SaveItPort storage
 
-    ProductionProcessor( UserPort downstream, SaveItPort storage ) {
+    /**
+     * Used to track how long the service takes to run.
+     */
+    private final Timer serviceTimer
+
+    ProductionProcessor( UserPort downstream, SaveItPort storage, Timer serviceTimer ) {
         this.downstream = downstream
         this.storage = storage
+        this.serviceTimer = serviceTimer
     }
 
     @Override
     UserModel loadUserData( String userID ) {
-        // another option would be to provide a default object instead of throwing an error
-        def model = downstream.fetchUser( userID ).orElseThrow( { new IllegalStateException( "No such user: ${userID}" )  } )
-        storage.persistToRelationalStore( model )
-        storage.persistToDocumentStore( model )
-        storage.persistToKeyValueStore( model )
-        model
+        // lets time the invocation
+        def work = {
+            // another option would be to provide a default object instead of throwing an error
+            def model = downstream.fetchUser( userID ).orElseThrow( {
+                new IllegalStateException( "No such user: ${userID}" )
+            } )
+            storage.persistToRelationalStore( model )
+            storage.persistToDocumentStore( model )
+            storage.persistToKeyValueStore( model )
+            model
+        } as Supplier<UserModel>
+        serviceTimer.record( work )
     }
 }
