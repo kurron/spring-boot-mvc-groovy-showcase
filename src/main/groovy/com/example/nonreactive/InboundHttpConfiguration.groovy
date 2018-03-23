@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 /**
- * Configuration for the web aspects of the service.
+ * Configuration for the web aspects of inbound HTTP services.
  */
 @Configuration
-class WebConfiguration {
+class InboundHttpConfiguration {
 
     @Autowired
     ApplicationProperties configuration

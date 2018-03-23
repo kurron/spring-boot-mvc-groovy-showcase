@@ -4,7 +4,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess
 
-import com.example.nonreactive.OutboundConfiguration
+import com.example.nonreactive.OutboundHttpConfiguration
 import org.junit.experimental.categories.Category
 import org.kurron.categories.OutboundIntegrationTest
 import org.springframework.beans.factory.annotation.Autowired
@@ -19,7 +19,7 @@ import spock.lang.Specification
  * This form smells more like a contract test than an integration test.
  */
 @Category( OutboundIntegrationTest )
-@SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = [OutboundConfiguration])
+@SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = [OutboundHttpConfiguration])
 @RestClientTest( components = [OutboundGateway] )
 class OutboundGatewayIntegrationTest extends Specification {
 
