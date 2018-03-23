@@ -388,6 +388,10 @@ Transfer-Encoding: chunked
 }
 ----
 
+=== Testing Functions That Do Not Return Anything
+Look at `OutputCaptureUnitTest` for an example of how you can test a function that does not return anything.
+
+
 == Troubleshooting
 === Cannot Connect To Redis
 Unfortunately, we are not using an embedded version of Redis, so you must be running a local instance in order for things to work.  The https://hub.docker.com/_/redis/[Docker container] is probably the simplest way to do so.
