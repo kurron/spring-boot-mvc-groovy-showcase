@@ -4,4 +4,4 @@
  * the gory details of the outside world and perform the necessary translation to the core's
  * object model.
  */
-package com.example.nonreactive.service.one.core;
+package com.example.nonreactive.service.one.core
