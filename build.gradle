@@ -37,6 +37,7 @@ dependencies {
 // trying to manage default tasks within separate Gradle files is too complex so I'm doing it here
 defaultTasks << 'clean'
 defaultTasks << 'build'
+defaultTasks << 'groovydoc'
 
 if ( 'true' == runIntegrationTests ) {
     defaultTasks << 'allIntegrationTests'
