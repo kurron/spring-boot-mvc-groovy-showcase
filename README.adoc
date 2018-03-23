@@ -348,6 +348,9 @@ Look at `VehicleRepositoryIntegrationTest` for an example of how to test a docum
 === Redis Support
 Look at `ContactRepositoryIntegrationTest` for an example of how to test a key-value repository.  Unlike some of the other test, a local instance of Redis must be running in order for the test to work.  Look at `ProductionProcessor` to see how the gateway is used from core.
 
+=== Caching Support
+Look at `UserPort` for an example of how to enable caching.  Look at `application.yml` to see how we force the selection of the in-memory cache implementation, otherwise Redis would've been selected.
+
 == Troubleshooting
 === Cannot Connect To Redis
 Unfortunately, we are not using an embedded version of Redis, so you must be running a local instance in order for things to work.  The https://hub.docker.com/_/redis/[Docker container] is probably the simplest way to do so.
