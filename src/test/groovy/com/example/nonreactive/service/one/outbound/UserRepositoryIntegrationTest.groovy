@@ -12,7 +12,7 @@ import spock.lang.Specification
  * Integration test of the {@link UserRepository} object.  This is another form of auto-configured test.
  */
 @Category( OutboundIntegrationTest )
-@SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE )
 @DataJpaTest
 class UserRepositoryIntegrationTest extends Specification {
 

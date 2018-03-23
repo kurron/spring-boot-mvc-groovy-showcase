@@ -13,7 +13,7 @@ import spock.lang.Specification
  * Integration test of the {@link ContactRepository} object.  This is another form of auto-configured test.
  */
 @Category( OutboundIntegrationTest )
-@SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE )
 @DataRedisTest
 class ContactRepositoryIntegrationTest extends Specification {
 

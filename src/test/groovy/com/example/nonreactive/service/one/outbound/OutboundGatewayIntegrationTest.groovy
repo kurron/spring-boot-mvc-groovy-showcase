@@ -19,7 +19,7 @@ import spock.lang.Specification
  * This form smells more like a contract test than an integration test.
  */
 @Category( OutboundIntegrationTest )
-@SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = [OutboundHttpConfiguration])
+@SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = [OutboundHttpConfiguration] )
 @RestClientTest( components = [OutboundGateway] )
 class OutboundGatewayIntegrationTest extends Specification {
 
