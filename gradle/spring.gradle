@@ -20,13 +20,13 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('org.springframework.boot:spring-boot-starter-data-neo4j')
 	compile('org.springframework.boot:spring-boot-starter-data-redis')
 	compile('org.springframework.boot:spring-boot-starter-cache')
 	compile('org.springframework.boot:spring-boot-starter-hateoas')
     compile('org.springframework.boot:spring-boot-starter-web')
 /*
 	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
-	compile('org.springframework.boot:spring-boot-starter-data-neo4j')
 	compile('org.springframework.boot:spring-boot-starter-security')
 */
     /*
@@ -62,6 +62,8 @@ dependencies {
     runtime('com.fasterxml.jackson.dataformat:jackson-dataformat-xml')
     runtime('org.hsqldb:hsqldb')
     runtime('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+    runtime('org.neo4j:neo4j-ogm-embedded-driver:3.1.0')
+    runtime('org.neo4j:neo4j:3.3.5')
     // JMX over HTTP does not appear to be that useful
     // runtime('org.jolokia:jolokia-core')
 }

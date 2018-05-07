@@ -16,6 +16,10 @@ spring:
     profiles: default
     cache:
         type: simple
+    data:
+        neo4j:
+            embedded:
+                enabled: true
     jackson:
         serialization:
             indent_output: true
