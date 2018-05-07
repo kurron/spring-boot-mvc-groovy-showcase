@@ -1,10 +1,10 @@
 package com.example.nonreactive.service.one.outbound
 
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.keyvalue.repository.KeyValueRepository
 
 /**
  * Outbound gateway the interacts with Redis.
  */
-interface ContactRepository extends CrudRepository<ContactEntity, String> {
+interface ContactRepository extends KeyValueRepository<ContactEntity, String> {
 
 }
