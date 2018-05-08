@@ -20,6 +20,7 @@ spring:
         neo4j:
             embedded:
                 enabled: true
+        autoIndex: ASSERT
     jackson:
         serialization:
             indent_output: true
