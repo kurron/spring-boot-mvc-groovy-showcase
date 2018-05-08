@@ -27,19 +27,19 @@ class CustomerAssetRelationshipIntegrationTest extends Specification {
         assert repository
     }
 
-    void testOneToOneRelationship() {
+    void 'exercise one-to-one relationship'() {
         def asset = saveAsset()
         def customer = saveCustomer()
-        def hasSeen = new CustomRelationshipEntity( customer: customer, asset: asset, times: 1 )
-        customer.hasSeen.add( hasSeen )
+        def favorite = new IsFavoriteRelationshipEntity( customer: customer, asset: asset, times: 1 )
+        customer.favorite = favorite
 
         expect:
         repository.save( customer )
         def found = repository.findById( customer.id ).get()
-        1 == found.hasSeen.first().times
+        asset.id == found.favorite.id
     }
 
-    void testOneToManyRelationship() {
+    void 'exercise one-to-many relationship'() {
         def assets = (1..100).collect { saveAsset() }
         def customer = saveCustomer()
         assets.each {

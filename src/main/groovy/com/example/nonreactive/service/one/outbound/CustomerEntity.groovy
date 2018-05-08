@@ -25,6 +25,12 @@ class CustomerEntity {
     List<String> labels = [ 'Person', 'Account' ]
 
     /**
+     * Relates customer to favorite asset.
+     */
+    @Relationship( type = 'IS_FAVORITE' )
+    IsFavoriteRelationshipEntity favorite
+
+    /**
      * Relates customer to seen assets.
      */
     @Relationship( type = 'HAS_SEEN' )
