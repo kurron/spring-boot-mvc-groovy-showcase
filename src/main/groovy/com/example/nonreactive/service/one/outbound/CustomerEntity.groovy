@@ -1,10 +1,12 @@
 package com.example.nonreactive.service.one.outbound
 
+import groovy.util.logging.Slf4j
 import org.neo4j.ogm.annotation.*
 
 /**
  * This object can be persisted to the database.
  */
+@Slf4j
 @NodeEntity( label = 'Customer' )
 class CustomerEntity {
 
@@ -41,4 +43,12 @@ class CustomerEntity {
      */
     @Relationship( type = 'HAS_SEEN' )
     Set<CustomRelationshipEntity> hasSeen = []
+
+    /**
+     * Called when the entity is loaded.
+     */
+    @PostLoad
+    void postLoad() {
+        log.debug( 'Just loaded entity {}', id )
+    }
 }

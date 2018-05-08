@@ -1,11 +1,12 @@
 package com.example.nonreactive.service.one.outbound
 
+import groovy.util.logging.Slf4j
 import org.neo4j.ogm.annotation.*
 
 /**
  * This object can be persisted to the database.
  */
-//@Canonical
+@Slf4j
 @RelationshipEntity( type = 'IS_FAVORITE' )
 class IsFavoriteRelationshipEntity {
 
@@ -33,4 +34,13 @@ class IsFavoriteRelationshipEntity {
 
     @EndNode
     AssetEntity asset
+
+    /**
+     * Called when the entity is loaded.
+     */
+    @PostLoad
+    void postLoad() {
+        log.debug( 'Just loaded entity {}', id )
+    }
+
 }
