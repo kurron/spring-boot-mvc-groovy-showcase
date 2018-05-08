@@ -1,16 +1,10 @@
 package com.example.nonreactive.service.one.outbound
 
-import groovy.transform.Canonical
-import org.neo4j.ogm.annotation.GeneratedValue
-import org.neo4j.ogm.annotation.Id
-import org.neo4j.ogm.annotation.Labels
-import org.neo4j.ogm.annotation.NodeEntity
-import org.neo4j.ogm.annotation.Property
+import org.neo4j.ogm.annotation.*
 
 /**
  * This object can be persisted to the database.
  */
-@Canonical
 @NodeEntity( label = 'Asset' )
 class AssetEntity {
 
