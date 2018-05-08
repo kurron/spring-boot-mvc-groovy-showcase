@@ -31,28 +31,27 @@ class CustomerAssetRelationshipIntegrationTest extends Specification {
         def asset = saveAsset()
         def customer = saveCustomer()
         def hasSeen = new CustomRelationshipEntity( customer: customer, asset: asset, times: 1 )
-        customer.hasSeen = hasSeen
+        customer.hasSeen.add( hasSeen )
 
         expect:
         repository.save( customer )
         def found = repository.findById( customer.id ).get()
-        1 == found.hasSeen.times
+        1 == found.hasSeen.first().times
     }
 
-/*
     void testOneToManyRelationship() {
         def assets = (1..100).collect { saveAsset() }
         def customer = saveCustomer()
-        customer.hasSeen.addAll( assets )
+        assets.each {
+            def hasSeen = new CustomRelationshipEntity( customer: customer, asset: it, times: 1 )
+            customer.hasSeen.add( hasSeen )
+        }
+        entityManager.save( customer )
 
         expect:
-        repository.save( customer )
         def found = repository.findById( customer.id ).get()
-        assets.every {
-            found.hasSeen.contains( it )
-        }
+        found.hasSeen.size() == assets.size()
     }
-*/
 
     private CustomerEntity saveCustomer() {
         def entity = new CustomerEntity( name: 'Random' )

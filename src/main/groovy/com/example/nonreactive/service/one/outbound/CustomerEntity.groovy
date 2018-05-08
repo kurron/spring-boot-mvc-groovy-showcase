@@ -28,5 +28,5 @@ class CustomerEntity {
      * Relates customer to seen assets.
      */
     @Relationship( type = 'HAS_SEEN' )
-    CustomRelationshipEntity hasSeen
+    Set<CustomRelationshipEntity> hasSeen = []
 }
