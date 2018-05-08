@@ -35,13 +35,13 @@ class CustomerEntity {
     /**
      * Relates customer to favorite asset.
      */
-    @Relationship( type = 'IS_FAVORITE' )
+    @Relationship( type = 'IS_FAVORITE', direction = Relationship.UNDIRECTED )
     IsFavoriteRelationshipEntity favorite
 
     /**
      * Relates customer to seen assets.
      */
-    @Relationship( type = 'HAS_SEEN' )
+    @Relationship( type = 'HAS_SEEN', direction = Relationship.OUTGOING )
     Set<CustomRelationshipEntity> hasSeen = []
 
     /**
