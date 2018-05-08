@@ -16,6 +16,12 @@ class CustomerEntity {
     Long id
 
     /**
+     * Optimistic locking.
+     */
+    @Version
+    Long version
+
+    /**
      * Customer's full name.
      */
     @Property( name = 'name' )

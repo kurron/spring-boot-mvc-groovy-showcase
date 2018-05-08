@@ -17,6 +17,12 @@ class CustomRelationshipEntity {
     Long id
 
     /**
+     * Optimistic locking.
+     */
+    @Version
+    Long version
+
+    /**
      * How many times has the customer seen the asset.
      */
     @Property( name = 'times' )

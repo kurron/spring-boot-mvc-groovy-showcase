@@ -16,6 +16,12 @@ class AssetEntity {
     Long id
 
     /**
+     * Optimistic locking.
+     */
+    @Version
+    Long version
+
+    /**
      * Asset's description.
      */
     @Property( name = 'description' )
